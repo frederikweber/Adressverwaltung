@@ -1,6 +1,6 @@
 package ch.bs.frederikweber.adressverwaltung.persistence;
 
-import ch.bs.frederikweber.adressverwaltung.data.Person;
+import ch.bs.frederikweber.adressverwaltung.tools.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Local implements DataManager {
     private List<Person> dataList;
 
-    public Local() {
+    protected Local() {
         this.dataList = new ArrayList<Person>();
     }
 
@@ -29,10 +29,17 @@ public class Local implements DataManager {
     }
 
     public void saveAll(List<Person> persons) {
-        this.dataList.addAll(persons);
+        for(Person actual:persons){
+            this.save(actual);
+        }
     }
 
     public void save(Person person) {
+        person.setId(this.dataList.size());
         this.dataList.add(person);
+    }
+
+    public void delete(Person person){
+        this.dataList.remove(person);
     }
 }

@@ -1,4 +1,4 @@
-package ch.bs.frederikweber.adressverwaltung.data;
+package ch.bs.frederikweber.adressverwaltung.tools;
 
 import org.junit.Test;
 
